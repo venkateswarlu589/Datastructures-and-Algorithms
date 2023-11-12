@@ -1,10 +1,16 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        result = defaultdict(list)
 
-        for i in strs:
-            count = [0] * 26
-            for j in i:
-                count[ord(j)-ord("a")] += 1
-            result[tuple(count)].append(i)
-        return result.values()
+        anagram_groups = defaultdict(list)
+
+    # Iterate through each string in the input array
+        for s in strs:
+        # Sort the characters of the string and use it as a key
+            sorted_str = ''.join(sorted(s))
+        # Append the original string to the corresponding group
+            anagram_groups[sorted_str].append(s)
+
+    # Convert the values of the defaultdict to a list to get the final result
+        result = list(anagram_groups.values())
+    
+        return result
