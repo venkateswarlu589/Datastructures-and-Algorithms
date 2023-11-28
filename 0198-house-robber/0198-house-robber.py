@@ -1,8 +1,10 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        x, y = 0, 0
-        for i in range(len(nums)):
-            z = max(nums[i] + x,y)
-            x = y
-            y = z
-        return y
+        rob1= 0
+        rob2 = 0
+        for i in nums:
+            new = max(rob1 + i ,rob2)
+            rob1 = rob2
+            rob2 = new
+        return rob2
+       
